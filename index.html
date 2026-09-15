@@ -1,0 +1,705 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Brewed Bliss — naturally fermented kombucha, thoughtfully crafted for modern living." />
+  <title>Brewed Bliss — Naturally Refreshing. Exceptionally Crafted.</title>
+  <style>
+    :root {
+      --cream: #f7f2ea;
+      --paper: #fffdf9;
+      --ink: #251711;
+      --muted: #756861;
+      --amber: #f3a413;
+      --amber-soft: #ffd36b;
+      --rust: #9d3510;
+      --rust-dark: #6d230b;
+      --sage: #dfe9df;
+      --sky: #d9eef2;
+      --line: rgba(37, 23, 17, .12);
+      --max: 1240px;
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --shadow: 0 24px 70px rgba(88, 41, 16, .12);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    body.menu-open { overflow: hidden; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+    img { display: block; max-width: 100%; }
+    .container { width: min(calc(100% - 44px), var(--max)); margin-inline: auto; }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 20px;
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--rust);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 0 22px;
+      border: 1px solid var(--ink);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink);
+      font-size: .9rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform .18s ease, background .18s ease, color .18s ease, border-color .18s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-dark { background: var(--ink); color: white; }
+    .btn-amber { background: var(--amber); border-color: var(--amber); }
+    .btn-light { color: white; border-color: rgba(255,255,255,.5); }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(247, 242, 234, .9);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+    }
+    nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.32rem;
+      letter-spacing: -.055em;
+      white-space: nowrap;
+    }
+    .brand-bubbles { display: inline-flex; align-items: flex-end; gap: 2px; height: 22px; }
+    .brand-bubbles i { display: block; border: 1.8px solid var(--amber); border-radius: 50%; }
+    .brand-bubbles i:nth-child(1) { width: 7px; height: 7px; }
+    .brand-bubbles i:nth-child(2) { width: 10px; height: 10px; margin-bottom: 5px; }
+    .brand-bubbles i:nth-child(3) { width: 5px; height: 5px; margin-bottom: 14px; }
+
+    .nav-links { display: flex; align-items: center; gap: 28px; color: var(--muted); font-size: .9rem; }
+    .nav-links a { transition: color .18s ease; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+    .menu-btn {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .hero { padding: 28px 0 62px; }
+    .hero-shell {
+      min-height: 720px;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.02fr .98fr;
+      background:
+        radial-gradient(circle at 72% 18%, rgba(255,255,255,.5), transparent 24%),
+        linear-gradient(135deg, #f5b11f 0%, #e58316 46%, #9e3711 100%);
+      box-shadow: var(--shadow);
+    }
+    .hero-copy {
+      padding: 70px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+    .hero .eyebrow { color: var(--ink); opacity: .75; }
+    h1 {
+      font-size: clamp(4.1rem, 7.2vw, 7.5rem);
+      line-height: .91;
+      letter-spacing: -.075em;
+      font-weight: 650;
+      max-width: 760px;
+      margin-bottom: 30px;
+    }
+    .hero-copy p {
+      max-width: 560px;
+      color: rgba(37,23,17,.72);
+      font-size: 1.12rem;
+      line-height: 1.68;
+      margin-bottom: 32px;
+    }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero-art {
+      position: relative;
+      min-height: 720px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 44px 28px 16px;
+    }
+    .hero-art::before {
+      content: "";
+      position: absolute;
+      inset: 12% 8% 8% 5%;
+      border-radius: 50%;
+      background: rgba(255,255,255,.13);
+      filter: blur(2px);
+    }
+    .hero-art img {
+      width: min(100%, 610px);
+      height: 610px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 44% 44% 30px 30px;
+      box-shadow: 0 30px 70px rgba(71, 31, 10, .28);
+      position: relative;
+      z-index: 1;
+    }
+    .hero-note {
+      position: absolute;
+      right: 30px;
+      bottom: 30px;
+      z-index: 3;
+      width: 205px;
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.2);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,.3);
+      font-size: .82rem;
+      line-height: 1.55;
+    }
+
+    .pillars { padding: 36px 0 128px; }
+    .pillar-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .pillar { padding: 28px 22px; border-right: 1px solid var(--line); }
+    .pillar:last-child { border-right: 0; }
+    .pillar strong { display: block; margin-bottom: 5px; font-size: 1rem; }
+    .pillar span { color: var(--muted); font-size: .86rem; }
+
+    .intro { padding-bottom: 150px; }
+    .intro-inner { max-width: 1060px; }
+    .intro h2 {
+      font-size: clamp(2.8rem, 5.2vw, 5.5rem);
+      line-height: 1.03;
+      letter-spacing: -.06em;
+      font-weight: 520;
+    }
+    .intro h2 span { color: var(--muted); }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 40px;
+      margin-bottom: 52px;
+    }
+    .section-head h2 {
+      font-size: clamp(2.7rem, 4.8vw, 4.8rem);
+      line-height: .96;
+      letter-spacing: -.06em;
+      font-weight: 600;
+    }
+    .section-head p { max-width: 450px; color: var(--muted); line-height: 1.7; }
+
+    .products { padding-bottom: 150px; }
+    .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .product-card {
+      overflow: hidden;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--line);
+      background: var(--paper);
+      transition: transform .22s ease, box-shadow .22s ease;
+    }
+    .product-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .product-media { height: 515px; overflow: hidden; position: relative; }
+    .product-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .45s ease; }
+    .product-card:hover .product-media img { transform: scale(1.02); }
+    .product-card.original .product-media { background: #e49a17; }
+    .product-card.reverie .product-media { background: #dfded9; }
+    .product-card.reverie .product-media img { object-position: center 40%; }
+    .product-body { padding: 34px; }
+    .product-kicker {
+      display: inline-block;
+      margin-bottom: 10px;
+      font-size: .7rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--rust);
+    }
+    .product-body h3 { font-size: 2.2rem; line-height: 1.03; letter-spacing: -.05em; margin-bottom: 13px; }
+    .product-body p { color: var(--muted); line-height: 1.7; margin-bottom: 22px; }
+    .best-for { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 24px; }
+    .best-for span {
+      padding: 8px 11px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: .78rem;
+      color: var(--muted);
+      background: rgba(255,255,255,.55);
+    }
+
+    .sport { padding-bottom: 150px; }
+    .sport-shell {
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      min-height: 650px;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      background: #eef2ec;
+      border: 1px solid var(--line);
+    }
+    .sport-image { min-height: 650px; position: relative; overflow: hidden; }
+    .sport-image img { width: 100%; height: 100%; object-fit: cover; object-position: 52% center; }
+    .sport-copy { padding: 68px; display: flex; flex-direction: column; justify-content: center; }
+    .sport-copy h2 {
+      font-size: clamp(3rem, 5vw, 5.1rem);
+      line-height: .98;
+      letter-spacing: -.065em;
+      font-weight: 590;
+      margin-bottom: 24px;
+    }
+    .sport-copy > p { color: var(--muted); font-size: 1.05rem; line-height: 1.75; margin-bottom: 30px; }
+    .sport-points { display: grid; grid-template-columns: 1fr; gap: 0; }
+    .sport-point { padding: 18px 0; border-top: 1px solid var(--line); }
+    .sport-point strong { display: block; margin-bottom: 4px; }
+    .sport-point span { color: var(--muted); font-size: .88rem; }
+
+    .why { background: var(--ink); color: white; padding: 145px 0; }
+    .why-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 90px; }
+    .why .eyebrow { color: var(--amber); }
+    .why h2 {
+      font-size: clamp(3rem, 5.2vw, 5.3rem);
+      line-height: .98;
+      letter-spacing: -.065em;
+      font-weight: 520;
+    }
+    .why-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .why-card {
+      min-height: 230px;
+      padding: 28px;
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: var(--radius-lg);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: rgba(255,255,255,.02);
+    }
+    .why-card small { color: var(--amber); font-weight: 800; }
+    .why-card h3 { font-size: 1.35rem; letter-spacing: -.03em; margin-bottom: 8px; }
+    .why-card p { color: rgba(255,255,255,.6); font-size: .9rem; line-height: 1.65; }
+
+    .every-sip { padding: 145px 0; }
+    .sip-shell {
+      border-radius: var(--radius-xl);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 68px;
+    }
+    .sip-shell h2 {
+      font-size: clamp(2.8rem, 4.8vw, 4.9rem);
+      line-height: .98;
+      letter-spacing: -.06em;
+      margin-bottom: 48px;
+    }
+    .sip-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .sip-item { padding-top: 22px; border-top: 1px solid var(--line); }
+    .sip-item b { display: block; font-size: 1.08rem; margin-bottom: 8px; }
+    .sip-item p { color: var(--muted); font-size: .92rem; line-height: 1.65; }
+
+    .future { padding-bottom: 145px; }
+    .future-shell {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 60px;
+      align-items: center;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(135deg, #e9efe7, #f4efe4);
+      padding: 68px;
+      border: 1px solid var(--line);
+    }
+    .future h2 {
+      font-size: clamp(2.8rem, 4.7vw, 4.8rem);
+      line-height: .98;
+      letter-spacing: -.06em;
+      margin-bottom: 22px;
+    }
+    .future p { color: var(--muted); line-height: 1.75; max-width: 620px; }
+    .future-mark {
+      min-height: 280px;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 30% 35%, rgba(255,255,255,.72), transparent 18%),
+        linear-gradient(145deg, #f1b23a, #b95722 62%, #77280e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: clamp(2.4rem, 4vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -.05em;
+      text-align: center;
+      padding: 30px;
+    }
+
+    .order { padding-bottom: 145px; }
+    .order-shell {
+      border-radius: var(--radius-xl);
+      background: var(--rust-dark);
+      color: white;
+      padding: 76px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+    }
+    .order .eyebrow { color: var(--amber); }
+    .order h2 {
+      font-size: clamp(3rem, 5vw, 5.2rem);
+      line-height: .96;
+      letter-spacing: -.065em;
+      font-weight: 520;
+    }
+    .order p { color: rgba(255,255,255,.68); font-size: 1.02rem; line-height: 1.72; margin-bottom: 28px; }
+    .order-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    footer { padding: 38px 0 52px; }
+    .footer-grid {
+      padding-top: 34px;
+      border-top: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 40px;
+    }
+    .footer-brand { font-size: 1.42rem; font-weight: 800; letter-spacing: -.05em; margin-bottom: 10px; }
+    .footer-copy, .footer-col a, .footer-col span { color: var(--muted); font-size: .86rem; }
+    .footer-col strong { display: block; font-size: .77rem; text-transform: uppercase; letter-spacing: .12em; margin-bottom: 13px; }
+    .footer-col a, .footer-col span { display: block; margin-bottom: 8px; }
+    .footer-bottom { margin-top: 46px; display: flex; justify-content: space-between; gap: 20px; color: var(--muted); font-size: .76rem; }
+
+    .mobile-panel {
+      display: none;
+      position: fixed;
+      inset: 76px 0 auto 0;
+      z-index: 99;
+      padding: 24px 22px 30px;
+      background: var(--cream);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 18px 40px rgba(37,23,17,.12);
+    }
+    .mobile-panel.open { display: block; }
+    .mobile-panel a { display: block; padding: 14px 0; border-bottom: 1px solid var(--line); font-weight: 650; }
+
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 1000px) {
+      .nav-links { display: none; }
+      .menu-btn { display: inline-grid; place-items: center; }
+      .hero-shell, .sport-shell, .why-grid, .future-shell, .order-shell { grid-template-columns: 1fr; }
+      .hero-art { min-height: 560px; padding-top: 0; }
+      .hero-art img { height: 520px; }
+      .pillar-grid { grid-template-columns: 1fr 1fr; }
+      .pillar:nth-child(2) { border-right: 0; }
+      .pillar:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .product-grid { grid-template-columns: 1fr; }
+      .why-cards { grid-template-columns: 1fr 1fr; }
+      .sip-grid { grid-template-columns: 1fr; }
+      .future-mark { min-height: 220px; }
+    }
+
+    @media (max-width: 680px) {
+      .container { width: min(calc(100% - 28px), var(--max)); }
+      nav { min-height: 68px; }
+      .nav-actions .btn { display: none; }
+      .mobile-panel { inset: 68px 0 auto 0; }
+      .hero { padding-top: 16px; }
+      .hero-copy { padding: 46px 28px 32px; }
+      .hero-shell { border-radius: 24px; }
+      h1 { font-size: clamp(3.7rem, 16vw, 5.6rem); }
+      .hero-copy p { font-size: 1rem; }
+      .hero-art { min-height: 455px; padding: 12px 20px 26px; }
+      .hero-art img { height: 430px; border-radius: 30px; }
+      .hero-note { display: none; }
+      .pillar-grid { grid-template-columns: 1fr; }
+      .pillar { border-right: 0; border-bottom: 1px solid var(--line); }
+      .section-head { flex-direction: column; align-items: flex-start; }
+      .product-media { height: 430px; }
+      .product-body { padding: 28px; }
+      .sport-copy { padding: 38px 28px; }
+      .sport-image { min-height: 460px; }
+      .why { padding: 100px 0; }
+      .why-cards { grid-template-columns: 1fr; }
+      .sip-shell, .future-shell, .order-shell { padding: 40px 28px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .product-card, .product-media img, .btn { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a class="brand" href="#top" aria-label="Brewed Bliss home">
+          <span>brewed bliss</span>
+          <span class="brand-bubbles" aria-hidden="true"><i></i><i></i><i></i></span>
+        </a>
+        <div class="nav-links" aria-label="Primary navigation">
+          <a href="#drinks">Drinks</a>
+          <a href="#active">Active living</a>
+          <a href="#why">Why Brewed Bliss</a>
+          <a href="#next">What's next</a>
+        </div>
+        <div class="nav-actions">
+          <a class="btn btn-dark" href="#order">Order</a>
+          <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+        </div>
+      </nav>
+    </div>
+    <div class="mobile-panel" id="mobilePanel">
+      <a href="#drinks">Drinks</a>
+      <a href="#active">Active living</a>
+      <a href="#why">Why Brewed Bliss</a>
+      <a href="#next">What's next</a>
+      <a href="#order">Order</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-shell">
+          <div class="hero-copy reveal">
+            <span class="eyebrow">Naturally refreshing · exceptionally crafted</span>
+            <h1>Real tea.<br>Real flavour.<br>Real refreshment.</h1>
+            <p>From the first sip, you'll notice the difference. Brewed Bliss is crafted with intention — naturally fermented tea, organic ingredients and a clean, refreshing finish designed for modern living.</p>
+            <div class="hero-actions">
+              <a class="btn btn-dark" href="#drinks">Explore our drinks</a>
+              <a class="btn" href="#active">Made to move</a>
+            </div>
+          </div>
+          <div class="hero-art reveal">
+            <img src="assets/hero-bottles.jpg" alt="Brewed Bliss naturally fermented kombucha bottles" />
+            <div class="hero-note">Thoughtful fermentation. Balanced sweetness. Premium ingredients. A drink that feels as good as it tastes.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pillars">
+      <div class="container">
+        <div class="pillar-grid reveal">
+          <div class="pillar"><strong>Gut-friendly</strong><span>Naturally fermented and made with live cultures.</span></div>
+          <div class="pillar"><strong>Low sugar</strong><span>Balanced, crisp and refreshingly light.</span></div>
+          <div class="pillar"><strong>Organic ingredients</strong><span>Real tea and botanicals, selected with intention.</span></div>
+          <div class="pillar"><strong>Small batch</strong><span>Carefully formulated and thoughtfully crafted.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="intro">
+      <div class="container">
+        <div class="intro-inner reveal">
+          <span class="eyebrow">Better by fermentation</span>
+          <h2>We believe the best drinks start with quality. <span>Not artificial shortcuts, not empty promises — just ingredients you can taste and craftsmanship you can feel.</span></h2>
+        </div>
+      </div>
+    </section>
+
+    <section class="products" id="drinks">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><span class="eyebrow">Our drinks</span><h2>Two ways to find your bliss.</h2></div>
+          <p>Our current collection starts with naturally fermented black tea and a botanical expression built around rose and chamomile — distinct in character, connected by the same clean approach.</p>
+        </div>
+
+        <div class="product-grid">
+          <article class="product-card original reveal">
+            <div class="product-media"><img src="assets/original-product.jpg" alt="Brewed Bliss naturally fermented black tea kombucha" /></div>
+            <div class="product-body">
+              <span class="product-kicker">Original · naturally fermented black tea</span>
+              <h3>Kombucha</h3>
+              <p>Living, fermented goodness. Carefully fermented black tea with an authentic tang, gentle sweetness and a genuinely refreshing finish. Each batch is crafted with patience and precision to preserve the character of real fermented tea.</p>
+              <div class="best-for"><span>Gut-friendly</span><span>Post-workout refresh</span><span>Everyday wellness</span></div>
+              <a class="btn btn-dark" href="#order">Order kombucha</a>
+            </div>
+          </article>
+
+          <article class="product-card reverie reveal">
+            <div class="product-media"><img src="assets/reverie-product.jpg" alt="Brewed Bliss Reverie rose and chamomile black tea" /></div>
+            <div class="product-body">
+              <span class="product-kicker">Botanical expression · rose & chamomile</span>
+              <h3>Reverie</h3>
+              <p>Delicate floral notes meet smooth black tea in a sophisticated blend. Rose brings subtle sweetness and elegance, while chamomile adds a gentle, soothing quality. Reverie is your moment of pause — a mindful refresh with floral complexity.</p>
+              <div class="best-for"><span>Afternoon reset</span><span>Moments of calm</span><span>Floral tea lovers</span></div>
+              <a class="btn btn-dark" href="#order">Order Reverie</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="sport" id="active">
+      <div class="container">
+        <div class="sport-shell reveal">
+          <div class="sport-image"><img src="assets/active-lifestyle.jpg" alt="Black female runner enjoying Brewed Bliss after exercise" /></div>
+          <div class="sport-copy">
+            <span class="eyebrow">Refreshment for what moves you</span>
+            <h2>Active life. Cleaner refreshment.</h2>
+            <p>Whether it's a morning run, a hard gym session or simply a demanding day, Brewed Bliss belongs naturally in the reset that follows — sophisticated flavour, a lighter drinking experience and a premium alternative to the usual overly sweet choices.</p>
+            <div class="sport-points">
+              <div class="sport-point"><strong>After training</strong><span>Cold, crisp refreshment when the session is done.</span></div>
+              <div class="sport-point"><strong>Between commitments</strong><span>A considered drink that fits the rhythm of a modern day.</span></div>
+              <div class="sport-point"><strong>When you want better</strong><span>Real tea, fermentation and flavour instead of artificial noise.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="why" id="why">
+      <div class="container">
+        <div class="why-grid">
+          <div class="reveal"><span class="eyebrow">Why choose Brewed Bliss</span><h2>Quality you can taste. Craft you can trust.</h2></div>
+          <div class="why-cards">
+            <div class="why-card reveal"><small>01</small><div><h3>Quality ingredients</h3><p>Premium tea and carefully selected botanicals form the foundation of every drink. We source with intention and brew with care.</p></div></div>
+            <div class="why-card reveal"><small>02</small><div><h3>Craft approach</h3><p>These are not assembly-line drinks. Flavour balance, ingredient selection and batch quality receive deliberate attention.</p></div></div>
+            <div class="why-card reveal"><small>03</small><div><h3>Naturally better</h3><p>Fermentation, live cultures and real botanicals do the work. The goal is a clean, intentional product without unnecessary shortcuts.</p></div></div>
+            <div class="why-card reveal"><small>04</small><div><h3>Built around real moments</h3><p>Calm, movement, lunch, work or a simple pause — each drink has a place in the way people actually live.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="every-sip">
+      <div class="container">
+        <div class="sip-shell reveal">
+          <span class="eyebrow">Every sip counts</span>
+          <h2>More than a drink. A better choice.</h2>
+          <div class="sip-grid">
+            <div class="sip-item"><b>Clean refreshment</b><p>Whether you're looking for calm, movement or everyday wellness, the drink should serve a real purpose.</p></div>
+            <div class="sip-item"><b>Quality you can taste</b><p>Premium ingredients and careful craftsmanship should be apparent from the first sip, not buried in marketing copy.</p></div>
+            <div class="sip-item"><b>How you want to feel</b><p>Light, refreshed and ready for what comes next — without making wellness feel complicated.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="future" id="next">
+      <div class="container">
+        <div class="future-shell reveal">
+          <div>
+            <span class="eyebrow">The Brewed Bliss world is growing</span>
+            <h2>Kombucha now. More fermented tea expressions next.</h2>
+            <p>The current collection is intentionally focused. As Brewed Bliss expands, additional fermented tea expressions will bring new botanicals, flavour profiles and moments into the range — always with the same premium, thoughtful approach.</p>
+          </div>
+          <div class="future-mark">More ways<br>to refresh.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="order" id="order">
+      <div class="container">
+        <div class="order-shell reveal">
+          <div><span class="eyebrow">Ready when you are</span><h2>Your next bottle of bliss.</h2></div>
+          <div>
+            <p>Direct ordering and WhatsApp ordering are part of the Brewed Bliss experience. The buttons below are ready to be connected to your actual checkout and WhatsApp number before launch.</p>
+            <div class="order-actions">
+              <button class="btn btn-amber" type="button" onclick="orderNotice('online')">Shop online</button>
+              <button class="btn btn-light" type="button" onclick="orderNotice('whatsapp')">Order on WhatsApp</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">brewed bliss</div>
+          <div class="footer-copy">Naturally refreshing. Exceptionally crafted. Premium fermented tea for modern living.</div>
+        </div>
+        <div class="footer-col"><strong>Explore</strong><a href="#drinks">Drinks</a><a href="#active">Active living</a><a href="#why">Why Brewed Bliss</a><a href="#next">What's next</a></div>
+        <div class="footer-col"><strong>Connect</strong><span>Direct ordering</span><span>WhatsApp ordering</span><span>Stockist enquiries</span></div>
+      </div>
+      <div class="footer-bottom"><span>© <span id="year"></span> Brewed Bliss.</span><span>Brewed in Nigeria.</span></div>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mobilePanel = document.getElementById('mobilePanel');
+
+    menuBtn.addEventListener('click', () => {
+      const open = mobilePanel.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(open));
+      menuBtn.textContent = open ? '×' : '☰';
+      document.body.classList.toggle('menu-open', open);
+    });
+
+    mobilePanel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mobilePanel.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      menuBtn.textContent = '☰';
+      document.body.classList.remove('menu-open');
+    }));
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function orderNotice(type) {
+      const text = type === 'whatsapp'
+        ? 'WhatsApp ordering is ready to be connected. Add the Brewed Bliss WhatsApp number before launch.'
+        : 'Online checkout is ready to be connected before launch.';
+      alert(text);
+    }
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
