@@ -160,6 +160,16 @@ footer{padding:35px 0 50px}
 .footercol a,.footercol span{display:block;margin-bottom:7px}
 .footerbottom{margin-top:42px;display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:.75rem}
 
+.media-frame{overflow:hidden;border-radius:var(--r);border:1px solid var(--line);background:var(--paper);box-shadow:var(--shadow)}
+.media-frame img,.media-frame video{display:block;width:100%;height:auto}
+.hero-media-only{padding:18px 0 58px}
+.hero-media-only .media-frame{border-radius:var(--r)}
+.hero-media-only .hero-note{margin-top:18px}
+.products-media{margin-top:30px}
+.lifestyle-media{margin-top:28px}
+.value-media{margin:0 0 38px}
+.value-media video{aspect-ratio:16/9;object-fit:cover;background:#160f0c}
+.everyday-image img{aspect-ratio:auto;height:auto;object-fit:contain}
 @media(max-width:1020px){
   .navlinks{display:none}.menu{display:grid;place-items:center}
   .hero-products{grid-template-columns:repeat(2,1fr);padding:10px 30px 40px}
@@ -174,7 +184,7 @@ footer{padding:35px 0 50px}
   .container{width:min(calc(100% - 28px),var(--max))}
   nav{height:68px}.mobilepanel{inset:68px 0 auto}
   .brand-logo img{height:31px}.brand-logo{min-width:0}
-  .hero{padding-top:12px}
+  .hero{padding-top:12px}.hero-media-only{padding-top:10px;padding-bottom:44px}.media-frame{border-radius:20px}
   .hero-shell{border-radius:22px}
   .hero-copy{padding:38px 22px 18px}
   h1{font-size:clamp(2.9rem,13vw,4.4rem)}
@@ -223,45 +233,18 @@ footer{padding:35px 0 50px}
 </header>
 
 <main id="top">
-<section class="hero"><div class="container"><div class="hero-shell">
-  <div class="hero-copy"><span class="eyebrow">Real tea · clean refreshment</span><h1>Naturally Refreshing.<br>Exceptionally Crafted.</h1><p>Small-batch tea refreshments made with quality ingredients, lower sugar choices and clean, everyday flavour.</p></div>
-  <div class="hero-products">
-    <div class="hero-product"><div class="bottle-wrap"><img src="assets/071adffe-2aee-4947-9ed8-1a6efacae05a(1).png" alt="Brewed Bliss Reverie"><div class="bottle-overlay">Reverie</div></div><strong>Reverie</strong><span>Rose &amp; Chamomile</span></div>
-    <div class="hero-product"><div class="bottle-wrap"><img src="assets/071adffe-2aee-4947-9ed8-1a6efacae05a(1).png" alt="Brewed Bliss Sanctuary"><div class="bottle-overlay">Sanctuary</div></div><strong>Sanctuary</strong><span>Lavender &amp; Mint</span></div>
-    <div class="hero-product"><div class="bottle-wrap"><img src="assets/071adffe-2aee-4947-9ed8-1a6efacae05a(1).png" alt="Brewed Bliss Kombucha"><div class="bottle-overlay">Kombucha</div></div><strong>Kombucha</strong><span>Kombucha</span></div>
-    <div class="hero-product"><div class="bottle-wrap"><img src="assets/071adffe-2aee-4947-9ed8-1a6efacae05a(1).png" alt="Brewed Bliss Zest"><div class="bottle-overlay">Zest</div></div><strong>Zest</strong><span>Lemongrass &amp; Ginger</span></div>
-  </div>
-  <div class="benefitbar"><div class="benefitgrid">
-    <div class="benefit"><strong>Small-Batch Craft</strong><span>Made with care</span></div>
-    <div class="benefit"><strong>Quality Ingredients</strong><span>Real tea and thoughtful ingredients</span></div>
-    <div class="benefit"><strong>Lower Sugar</strong><span>A lighter refreshment choice</span></div>
-    <div class="benefit"><strong>Family-Friendly</strong><span>Made for everyday moments</span></div>
-    <div class="benefit"><strong>Clean Refreshment</strong><span>Bright, balanced and easy to enjoy</span></div>
-  </div></div>
-</div><div class="hero-note">Four flavours. Small-batch craft. Quality ingredients. Clean refreshment.</div></div></section>
-
-<section class="statement"><div class="container"><div class="statement-inner"><span class="eyebrow">Four flavours · one standard</span><h2>Refreshment should feel simple. <span>Real tea, thoughtful ingredients, lower sugar choices and small-batch craft — made for everyday life.</span></h2></div></div></section>
+<section class="hero hero-media-only"><div class="container">
+  <div class="media-frame"><img src="assets/hero-real-tea.jpg" alt="Brewed Bliss Reverie, Sanctuary, Kombucha and Zest — naturally refreshing, exceptionally crafted" fetchpriority="high"></div>
+  <div class="hero-note">Four flavours. Small-batch craft. Quality ingredients. Clean refreshment.</div>
+</div></section><section class="statement"><div class="container"><div class="statement-inner"><span class="eyebrow">Four flavours · one standard</span><h2>Refreshment should feel simple. <span>Real tea, thoughtful ingredients, lower sugar choices and small-batch craft — made for everyday life.</span></h2></div></div></section>
 
 <section class="products" id="drinks"><div class="container">
   <div class="sectionhead"><div><span class="eyebrow">Our drinks</span><h2>Four Flavours</h2></div><p>Four distinct expressions, each built around real tea, careful flavour balance and the same clean approach to refreshment.</p></div>
-  <div class="productgrid">
-    <article class="product"><div class="product-image"><img src="assets/071adffe-2aee-4947-9ed8-1a6efacae05a(1).png" alt="Brewed Bliss Reverie"><div class="bottle-overlay">Reverie</div></div><div class="productbody"><span class="kicker">Rose &amp; Chamomile</span><h3>Reverie</h3><p>Delicately floral and softly balanced, with smooth tea, rose and chamomile.</p><div class="chips"><span class="chip">Floral</span><span class="chip">Calm moments</span><span class="chip">Clean refreshment</span></div></div></article>
-    <article class="product"><div class="product-image"><img src="assets/071adffe-2aee-4947-9ed8-1a6efacae05a(1).png" alt="Brewed Bliss Sanctuary"><div class="bottle-overlay">Sanctuary</div></div><div class="productbody"><span class="kicker">Lavender &amp; Mint</span><h3>Sanctuary</h3><p>Lavender and mint come together in a smooth, refreshing and balanced tea expression.</p><div class="chips"><span class="chip">Herbal</span><span class="chip">Refreshing</span><span class="chip">Balanced</span></div></div></article>
-    <article class="product"><div class="product-image"><img src="assets/071adffe-2aee-4947-9ed8-1a6efacae05a(1).png" alt="Brewed Bliss Kombucha"><div class="bottle-overlay">Kombucha</div></div><div class="productbody"><span class="kicker">Naturally Fermented Black Tea</span><h3>Kombucha</h3><p>Pure, simple and refreshingly real — naturally fermented black tea with live cultures and a clean tang.</p><div class="chips"><span class="chip">Gut-friendly</span><span class="chip">Live cultures</span><span class="chip">Everyday wellness</span></div></div></article>
-    <article class="product"><div class="product-image"><img src="assets/071adffe-2aee-4947-9ed8-1a6efacae05a(1).png" alt="Brewed Bliss Zest"><div class="bottle-overlay">Zest</div></div><div class="productbody"><span class="kicker">Lemongrass &amp; Ginger</span><h3>Zest</h3><p>Bright, crisp and invigorating, with citrus-led lemongrass and warming ginger notes.</p><div class="chips"><span class="chip">Bright</span><span class="chip">Citrus</span><span class="chip">Invigorating</span></div></div></article>
-  </div>
-</div></section>
-
-<section class="lifestyle" id="moments"><div class="container">
+  <div class="media-frame products-media"><img src="assets/four-flavours.jpg" alt="Brewed Bliss four flavours: Reverie, Sanctuary, Kombucha and Zest" loading="lazy"></div>
+</div></section><section class="lifestyle" id="moments"><div class="container">
   <div class="lifestyle-head"><span class="eyebrow">Brewed Bliss in real life</span><h2>Different moments. Same clean refreshment.</h2></div>
-  <div class="moments">
-    <div class="moment"><img src="assets/active-lifestyle.jpg" alt="Brewed Bliss after training"><div class="moment-copy"><strong>After training</strong><span>Cold, crisp refreshment when the session is done.</span></div></div>
-    <div class="moment placeholder"><div class="placeholder-copy"><strong>Between commitments</strong><span>For the run between meetings, errands, lunch and the rest of the day.</span></div></div>
-    <div class="moment placeholder"><div class="placeholder-copy"><strong>Quiet moments</strong><span>For winding down at home or taking a calm pause for yourself.</span></div></div>
-  </div>
-</div></section>
-
-<section class="why" id="why"><div class="container"><div class="whygrid">
+  <div class="media-frame lifestyle-media"><img src="assets/real-life.jpg" alt="Brewed Bliss in real life: after training, between commitments and quiet moments" loading="lazy"></div>
+</div></section><section class="why" id="why"><div class="container"><div class="whygrid">
   <div><span class="eyebrow">Why choose Brewed Bliss</span><h2>Quality you can taste. Craft you can trust.</h2></div>
   <div class="whycards">
     <div class="whycard"><small>01</small><div><h3>Quality Ingredients</h3><p>Premium tea and carefully selected ingredients form the foundation of every drink.</p></div></div>
@@ -273,14 +256,13 @@ footer{padding:35px 0 50px}
 
 <section class="value" id="value"><div class="container">
   <div class="value-head"><span class="eyebrow">Every Sip Counts</span><h2>More than refreshment.</h2></div>
+  <div class="media-frame value-media"><video autoplay muted loop playsinline preload="metadata" aria-label="Brewed Bliss Every Sip Counts"><source src="assets/every-sip-counts.mp4" type="video/mp4"></video></div>
   <div class="valuegrid">
     <div class="valuecard"><b>01</b><h3>Clean Refreshment</h3><p>Bright, balanced drinks designed to fit naturally into everyday moments.</p></div>
     <div class="valuecard"><b>02</b><h3>Quality You Can Taste</h3><p>Good tea, thoughtful ingredients and careful craftsmanship in every bottle.</p></div>
     <div class="valuecard"><b>03</b><h3>A Better Choice</h3><p>A lower-sugar alternative when you want something more considered than the usual overly sweet options.</p></div>
   </div>
-</div></section>
-
-<section class="everyday"><div class="container"><div class="everyday-shell">
+</div></section><section class="everyday"><div class="container"><div class="everyday-shell">
   <div><span class="eyebrow">Made for everyday moments</span><h2>Clean refreshment for every day and everyone.</h2><p>Brewed Bliss is built around approachable flavour, thoughtful ingredients and lower sugar choices — from workdays and lunches to social moments and active routines.</p>
   <div class="everyday-points">
     <div class="everyday-point"><strong>Family-Friendly</strong><span>Approachable flavours with broad everyday appeal.</span></div>
@@ -288,7 +270,7 @@ footer{padding:35px 0 50px}
     <div class="everyday-point"><strong>Quality Ingredients</strong><span>Real tea and carefully considered flavour.</span></div>
     <div class="everyday-point"><strong>Clean Refreshment</strong><span>Light, bright and easy to fit into daily life.</span></div>
   </div></div>
-  <div class="everyday-image"><img src="assets/future-range.jpg" alt="Brewed Bliss range for everyday refreshment" loading="lazy"></div>
+  <div class="everyday-image"><img src="assets/everyday-moments.jpg" alt="Brewed Bliss made for everyday moments with family and friends" loading="lazy"></div>
 </div></div></section>
 
 <section class="findus" id="find"><div class="container"><div class="findus-shell">
